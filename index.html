@@ -21,9 +21,9 @@
 
     <meta name="description" content="Sometimes Blogging">
 <meta property="og:type" content="website">
-<meta property="og:title" content="67gan">
+<meta property="og:title" content="无佛处">
 <meta property="og:url" content="http://lisiting.net/index.html">
-<meta property="og:site_name" content="67gan">
+<meta property="og:site_name" content="无佛处">
 <meta property="og:description" content="Sometimes Blogging">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="李有时">
@@ -38,7 +38,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>67gan</title>
+<title>无佛处</title>
   
 
 
@@ -71,7 +71,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">67gan</h1>
+      <h1 class="site-title">无佛处</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">知者不言，言者不知</p>
@@ -123,12 +123,12 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -158,6 +158,106 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://lisiting.net/2023/06/21/Revit%E8%A7%86%E5%9B%BE%E6%A0%B7%E6%9D%BF%E8%AE%BE%E7%BD%AE-%E6%A0%87%E9%AB%98%E4%B9%8B%E4%B8%8A%E5%8F%8A%E6%A0%87%E9%AB%98%E4%B9%8B%E4%B8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="李有时">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="无佛处">
+      <meta itemprop="description" content="Sometimes Blogging">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 无佛处">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/06/21/Revit%E8%A7%86%E5%9B%BE%E6%A0%B7%E6%9D%BF%E8%AE%BE%E7%BD%AE-%E6%A0%87%E9%AB%98%E4%B9%8B%E4%B8%8A%E5%8F%8A%E6%A0%87%E9%AB%98%E4%B9%8B%E4%B8%8B/" class="post-title-link" itemprop="url">Revit视图样板设置-标高之上及标高之下</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2023-06-21 02:37:21 / 修改时间：04:35:40" itemprop="dateCreated datePublished" datetime="2023-06-21T02:37:21+08:00">2023-06-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="通常做法"><a href="#通常做法" class="headerlink" title="通常做法"></a>通常做法</h2><p>Revit平面相关的视图样板中有一项视图范围的设置，可以设置平面视图套了这个样板后的视图范围。</p>
+<p>比较常见的做法是使用<strong>相关标高</strong>设置固定的值。这样不管使用这个视图样板的视图通过哪一个标高创建，都会根据对应的标高设定一个固定的视图范围值。</p>
+<p>下图是默认建筑样板的<code>平面_楼层</code>视图样板的视图范围设置，如果某平面视图使用标高2F进行创建，套用这个视图样板后，这个视图就会使用2F偏移2300mm作为视图范围的顶部，2F偏移1100mm作为视图的剖切面，2F偏移0mm作为视图范围底部。</p>
+<img src="典型视图范围设置.png" alt="典型设置" style="zoom:80%;">
+
+<h2 id="标高之上（之下）"><a href="#标高之上（之下）" class="headerlink" title="标高之上（之下）"></a>标高之上（之下）</h2><p>上面的方法有一个问题，如果层高超出了设置的固定值，有可能会导致一些图元超出视图范围，导致在平面中看不见。</p>
+<blockquote>
+<p>例如视图范围的顶部固定在2300，但实际层高超出了这个值。这时候为了保证图元完整，项目上通常做法是取消样板设置，手动调整视图范围。项目上更极端的会直接调视图样板中的固定值。不管采用前面说的哪个做法，在项目历经多次的修改或者转手多个人后，都有可能因为这个的操作导致视图多一些或者少一些东西。</p>
+<p>所以我做项目支持的时候，总是先检查视图范围</p>
+</blockquote>
+<p>所以我更喜欢使用后面这种设置方案——标高之上（之下）。</p>
+<p>通常，我会将视图范围的顶部设置在当前标高的上一个标高。例如当前视图在2F，大部分情况下，视图的顶部应当是3F。</p>
+<p>要实现这个想法，首先在样板中，需要将原本顶部的<strong>相关标高</strong>改为<strong>标高之上</strong>，通常，我会将偏移值设置为0。</p>
+<img src="标高之上.png" alt="标高之上" style="zoom:80%;">
+
+<p>在样板中设置好后，还需要告知使用样板的人员，要保证创建了标高之上的相关视图。例如对2F的视图应用此样板，则要保证项目中创建了3F的视图。</p>
+<p><strong>经测试，在Revit中，判定为标高之上的标高需同时满足以下条件</strong></p>
+<ol>
+<li>高度大于或等于当前视图的相关标高（如果多个标高比当前标高高，则取最近；如果多个标高与当前标高重叠，则取最先）</li>
+<li>此标高已创建相关视图</li>
+</ol>
+<p>在立面中可以看出哪些标高已经创建了相关平面。下图中1F，2F标高符合呈现蓝色，代表已经创建了相关视图。而3F标高符号为白色，代表未创建相关视图。当1F使用视图样板时，标高之上为2F。当2F使用视图样板时，<strong>无标高之上，视图范围顶部会变为无穷</strong>。</p>
+<img src="在立面中检查.png" alt="在立面中检查" style="zoom:80%;">
+
+<p>标高之下与标高之上类似，不一样的只是判定的条件变为高度小于等于当前相关标高。</p>
+<p>要注意的是仅视图范围顶部有标高之上的选项，而视图范围底部及视图深度有标高之下的选项。剖切面只可以使用相关标高。</p>
+<h2 id="碎碎念"><a href="#碎碎念" class="headerlink" title="碎碎念"></a>碎碎念</h2><p>想想我也好久没去调试样板了，今天指导后生的时候，心中十分感慨</p>
+<p>以前哪怕当上了部门负责人，也一直冲锋在前，很多事情亲历亲为</p>
+<p>以前我总觉得我能干倒一切，我满腔热血，我什么也不怕</p>
+<p>不知不觉，我开始指导后来的人，慢慢变成”想当年”了</p>
+<p>身体每况愈下，前路却更加飘摇</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://lisiting.net/2023/04/17/Revit%E4%BA%8C%E6%AC%A1%E5%BC%80%E5%8F%91%E4%B9%8B%E5%88%9B%E5%BB%BA%E5%B9%B6%E5%88%87%E6%8D%A2%E5%88%B0%E6%96%B0%E6%96%87%E6%A1%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -166,12 +266,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="67gan">
+      <meta itemprop="name" content="无佛处">
       <meta itemprop="description" content="Sometimes Blogging">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 67gan">
+      <meta itemprop="name" content="undefined | 无佛处">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
@@ -260,12 +360,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="67gan">
+      <meta itemprop="name" content="无佛处">
       <meta itemprop="description" content="Sometimes Blogging">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 67gan">
+      <meta itemprop="name" content="undefined | 无佛处">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
